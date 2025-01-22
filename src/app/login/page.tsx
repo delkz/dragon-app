@@ -1,7 +1,18 @@
+import { createClient } from '@/utils/supabase/server';
 import { login, signup } from './actions'
 import styles from "./style.module.scss";
+import { redirect } from 'next/navigation';
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  
+    const supabase = await createClient()
+  
+    const { data } = await supabase.auth.getUser()
+    if (data?.user) {
+      redirect('/')
+    }
+  
+
   return (
     <form className={styles.LoginPage}>
       <label htmlFor="email">Email:</label>
