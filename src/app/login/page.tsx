@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { login, signup } from './actions'
 import styles from "./style.module.scss";
 import { redirect } from 'next/navigation';
+import LoginForm from './loginForm';
 
 export default async function LoginPage() {
   
@@ -14,13 +15,6 @@ export default async function LoginPage() {
   
 
   return (
-    <form className={styles.LoginPage}>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
+    <LoginForm className={styles.loginForm} login={login} signup={signup}/>
   )
 }
