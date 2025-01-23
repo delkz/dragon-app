@@ -12,7 +12,6 @@ const DragonDetailDelete = ({dragonId}:DragonDetailDeleteProps) => {
 
     if(response.status == 200){
       console.log(response);
-      console.log('Dragon deleted');
       redirect('/');
     }
     

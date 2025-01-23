@@ -11,21 +11,21 @@ type DragonDetailProps = {
 }
 
 
-const DragonDetail = ({dragon}:DragonDetailProps) => {
-    if(!dragon || !dragon.id){
-        return(<div>Dragon not found</div>)
+const DragonDetail = ({ dragon }: DragonDetailProps) => {
+    if (!dragon || !dragon.id) {
+        return (<div>Dragon not found</div>)
     }
 
-    return(<div className={`${style.dragonCard}`}>
-        <h2 className={`${style.dragonCardTitle}`}><Link href={"/dragon/"+dragon.id}>{dragon.name}</Link></h2>
-        <p className={`${style.dragonCardType} type-${dragon.type}`}>Type: {dragon.type}</p>
-        <p className={`${style.dragonCardCreation}`}>Created At: {dragon.createdAt}</p>
+    return (<div className={`${style.dragonCard}`}>
+        <h2 id="dragonName" className={`${style.dragonCardTitle}`}><Link href={"/dragon/" + dragon.id}>{dragon.name}</Link></h2>
+        <p id="dragonType" className={`${style.dragonCardType} type-${dragon.type}`}>Type: {dragon.type}</p>
+        <p id="dragonCreationDate" className={`${style.dragonCardCreation}`}>Created At: {dragon.createdAt}</p>
         <div className={`${style.dragonCardButtons}`}>
             <Link href={"/dragon/edit/" + dragon.id}>Edit</Link>
-            <DragonDetailDelete dragonId={dragon.id}/>
+            <DragonDetailDelete dragonId={dragon.id} />
         </div>
     </div>)
-    
+
 }
 
 export default DragonDetail

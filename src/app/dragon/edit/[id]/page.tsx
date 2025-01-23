@@ -3,7 +3,6 @@ import EditForm from "./editForm";
 import styles from "./style.module.scss";
 import api from "@/utils/axios";
 import { protectedRoute } from "@/utils/protectedRoute";
-
 export default async function EditDragon({
   params,
 }: {
