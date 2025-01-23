@@ -1,12 +1,12 @@
 'use client'
 
 import { Dragon } from '@/utils/types/dragon'
-import React, { useState } from 'react'
+import React from 'react'
 import DragonDetailDelete from './dragonDetailDelete'
 import Link from 'next/link'
 import style from './style.module.scss';
 import getRelativeTime from '@/utils/getRelativeDate'
-import Image from 'next/image'
+import DragonImage from '../dragonImage/dragonImage'
 
 type DragonDetailProps = {
     dragon: Dragon | undefined,
@@ -17,18 +17,14 @@ const DragonDetail = ({ dragon }: DragonDetailProps) => {
     if (!dragon || !dragon.id) {
         return (<div>Dragon not found</div>)
     }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [imgSrc, setImgSrc] = useState(`/dragonImages/${dragon.id}.png`);
 
     return (<div className={`${style.dragonCard}`}>
 
         <Link title={dragon.name} href={"/dragon/" + dragon.id} className={`${style.dragonCardImage} `}>
-            <Image loading='lazy' alt={dragon.name} width={250} height={250} src={imgSrc} onError={() => {
-                setImgSrc("/dragonImages/0.png");
-            }}></Image>
+           <DragonImage dragon={dragon}/>
         </Link>
 
-        {dragon.createdAt && <p data-ref={dragon.createdAt} data-testid="dragonCreationDate" id="dragonCreationDate" className={`${style.dragonCardCreation}`}>
+        {dragon.createdAt && <p data-ref={dragon.createdAt} title={"Criado em " + new Intl.DateTimeFormat("pt-BR").format(new Date(dragon.createdAt)) } data-testid="dragonCreationDate" id="dragonCreationDate" className={`${style.dragonCardCreation}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>

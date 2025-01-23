@@ -31,8 +31,8 @@ const CreateForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label htmlFor="name">Name</label>
-                <input id="name" {...register("name", { required: true })} />
+                <label htmlFor="name">Nome</label>
+                <input placeholder="Nome do dragão" id="name" {...register("name", { required: true })} />
                 {errors.name && <span>This field is required</span>}
             </div>
             <div>
@@ -47,11 +47,11 @@ const CreateForm = () => {
                 {errors.type && <span>This field is required</span>}
             </div>
             <div>
-                <label htmlFor="description">Description</label>
-                <textarea id="description" {...register("histories", { required: true })} />
+                <label htmlFor="histories">Lendas</label>
+                <textarea placeholder="Separe as lendas de avistamento com virgulas" id="histories" {...register("histories", { required: true })} />
                 {errors.histories && <span>This field is required</span>}
             </div>
-            <button type="submit">Create Dragon</button>
+            <button type="submit">Criar novo dragão</button>
         </form>
     )
 }

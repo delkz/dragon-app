@@ -1,0 +1,93 @@
+.InfoDragon {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 1.6rem;
+    border-radius: 1rem;
+    background-color: white;
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.dragonImage{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        height: 25px;
+        width: 50%;
+        display: block;
+        background: black;
+        opacity: 0.25;
+        border-radius: 100%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        filter: blur(7px);
+    }
+
+    img {
+        transition: ease-in-out 0.2s;
+        &:hover {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+.dragonType {
+    background-color: #e8e8e8;
+
+    border-radius: .3125rem;
+    text-align: center;
+    padding: .3125rem;
+    font-size: .6875rem;
+    display: inline-block;
+    width: 4.6875rem;
+
+}
+
+.dragonName {
+    color: #2d2d2d;
+}
+
+.dragonCardCreation {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @media screen and (max-width: 1023px) {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.dragonInfosContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 1023px) {
+        flex-wrap: wrap;
+
+    }
+}
+
+.dragonHistories {
+    display: block;
+
+    text-align: center;
+    margin-top: 25px;
+
+    @media screen and (min-width: 1023px) {
+        max-width: 75%;
+    }
+}

@@ -15,8 +15,17 @@ const EditForm = ({dragon}:EditFormProps) => {
 
     const onSubmit = async (data: FormData) => {
 
+        // Essa parte do codigo trata o campo de historias, que pode ser um array ou uma string
+        let historiesArray = Array.isArray(data.histories) ? data.histories : [data.histories];
+        if(historiesArray.length == 1 && historiesArray[0]){
+            const tempArray = historiesArray[0].split(",");
+            historiesArray = tempArray;
+        }
+        data.histories = historiesArray.filter((history): history is string => history !== undefined);
+        
+
         const response = await api.put("/"+dragon.id, data);
-        console.log(response);
+
         if(response.status == 201){
           console.log('Dragon created');
         }
@@ -26,8 +35,8 @@ const EditForm = ({dragon}:EditFormProps) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label htmlFor="name">Name</label>
-                <input defaultValue={dragon.name} id="name" {...register("name", { required: true })} />
+                <label htmlFor="name">Nome</label>
+                <input placeholder="Nome do dragão"  defaultValue={dragon.name} id="name" {...register("name", { required: true })} />
                 {errors.name && <span>This field is required</span>}
             </div>
             <div>
@@ -42,11 +51,11 @@ const EditForm = ({dragon}:EditFormProps) => {
                 {errors.type && <span>This field is required</span>}
             </div>
             <div>
-                <label htmlFor="description">Description</label>
-                <textarea defaultValue={dragon.histories} id="description" {...register("histories", { required: true })} />
+                <label htmlFor="histories">Lendas</label>
+                <textarea placeholder="Separe as lendas de avistamento com virgulas" defaultValue={dragon.histories} id="description" {...register("histories", { required: true })} />
                 {errors.histories && <span>This field is required</span>}
             </div>
-            <button type="submit">EditForm Dragon</button>
+            <button type="submit">Editar dragão</button>
         </form>
     )
 }

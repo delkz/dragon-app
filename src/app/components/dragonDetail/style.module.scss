@@ -3,7 +3,7 @@
     padding: 1.6rem;
     border-radius: 1rem;
     background-color: white;
-    color: #4b4b4b;
+    color: var(--textColor);
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -110,3 +110,11 @@
 
 }
 
+
+
+.buttonDelete {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: var(--textColor)
+}
