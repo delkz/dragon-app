@@ -12,16 +12,16 @@ const Login = <LoginForm login={mockLogin} signup={mockSignup} />;
 describe('Login', () => {
     it('should disable login button if fields are empty', () => {
         render(Login);
-        const button = screen.getByRole('button', { name: /Log in/i });
+        const button = screen.getByTestId('loginButton');
         expect(button).toBeDisabled();
     });
 
 
     it('should enable login button when fields are filled', async () => {
         render(Login);
-        const usernameInput = screen.getByPlaceholderText(/email/i);
-        const passwordInput = screen.getByPlaceholderText(/password/i);
-        const button = screen.getByRole('button', { name: /Log in/i });
+        const usernameInput = screen.getByTestId('email');
+        const passwordInput = screen.getByTestId('password');
+        const button = screen.getByTestId('loginButton');
 
         fireEvent.change(usernameInput, { target: { value: 'testlogin@jest.com' } });
         fireEvent.change(passwordInput, { target: { value: 'password' } });

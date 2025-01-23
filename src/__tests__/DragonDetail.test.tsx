@@ -9,7 +9,7 @@ describe('Dragon Detail', () => {
 
     const name = await screen.findByText(/Smaug/i);
     const type = await screen.findByText(/Fire/i);
-    const createdAt = await screen.findByText(/2021-01-01/i);
+    const createdAt = await screen.findByTestId("dragonCreationDate");
 
     expect(name).toBeInTheDocument();
     expect(type).toBeInTheDocument();

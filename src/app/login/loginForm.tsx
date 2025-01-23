@@ -24,15 +24,15 @@ const LoginForm = ({ login, signup, className }: LoginFormProps) => {
   return <form className={styles.formContainer}>
     <div>
       <label htmlFor="email">Email:</label>
-      <input placeholder="email" {...register("email", { required: true })} id="email" name="email" type="email" required />
+      <input  data-testid="email" placeholder="email" {...register("email", { required: true })} id="email" name="email" type="email" required />
     </div>
     <div>
       <label htmlFor="password">Password:</label>
-      <input placeholder="password" {...register("password", { required: true })} id="password" name="password" type="password" required />
+      <input  data-testid="password" placeholder="password" {...register("password", { required: true })} id="password" name="password" type="password" required />
     </div>
 
-    <button className={styles.btnPrimary} disabled={!isDirty || !isValid} formAction={login}>Fazer login</button>
-    <button className={`${styles.formContainer} btn-secundary`} formAction={signup}>Criar novo usuario</button>
+    <button data-testid="loginButton" className={styles.btnPrimary} disabled={!isDirty || !isValid} formAction={login}>Fazer login</button>
+    <button data-testid="registerButton" className={`${styles.formContainer} btn-secundary`} formAction={signup}>Criar novo usuario</button>
 
     {(errors.password || errors.email) && <span>Verifique os campos</span>}
     {/* {(wrongPassowrd) && <span>Verifique o usuario ou senha</span>} */}
