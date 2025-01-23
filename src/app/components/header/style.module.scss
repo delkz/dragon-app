@@ -25,9 +25,10 @@
 }
 
 .buttonPrimary{
-    background-color: #007bff;
+    $color: #28b97c;
+    background-color: $color;
     color: #fff;
     &:hover{
-        background-color: #0056b3;
+        background-color: darken( $color, 10%);
     }
 }

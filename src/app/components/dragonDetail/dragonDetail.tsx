@@ -7,6 +7,7 @@ import Link from 'next/link'
 import style from './style.module.scss';
 import getRelativeTime from '@/utils/getRelativeDate'
 import DragonImage from '../dragonImage/dragonImage'
+import { motion } from "motion/react"
 
 type DragonDetailProps = {
     dragon: Dragon | undefined,
@@ -18,7 +19,9 @@ const DragonDetail = ({ dragon }: DragonDetailProps) => {
         return (<div>Dragon not found</div>)
     }
 
-    return (<div className={`${style.dragonCard}`}>
+    return (<motion.div
+        initial={{ scale: 0 }} animate={{ scale: 1 }}
+    className={`${style.dragonCard}`}>
 
         <Link title={dragon.name} href={"/dragon/" + dragon.id} className={`${style.dragonCardImage} `}>
            <DragonImage dragon={dragon}/>
@@ -49,7 +52,7 @@ const DragonDetail = ({ dragon }: DragonDetailProps) => {
                 {dragon.type}
             </span>
         </div>
-    </div>)
+    </motion.div>)
 
 }
 

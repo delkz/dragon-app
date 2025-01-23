@@ -109,11 +109,19 @@ form {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border: 1px solid $color-ar;
+  }
+
+  .btn-secundary{
+    background-color: transparent;
+    border-color: $color-ar;
+    color: $color-ar;
   }
   
   button:hover {
     background-color: darken( $color-ar, 10%);
     color: text-clr( darken( $color-ar, 10%) );
+    border-color: darken( $color-ar, 10%);
   }
 }
 

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import React from 'react'
 import api from "@/utils/axios";
 import { Dragon } from "@/utils/types/dragon";
+import toast from "react-hot-toast";
 
 type FormData = Dragon;
 type EditFormProps = {
@@ -23,12 +24,13 @@ const EditForm = ({dragon}:EditFormProps) => {
         }
         data.histories = historiesArray.filter((history): history is string => history !== undefined);
         
-
         const response = await api.put("/"+dragon.id, data);
 
-        if(response.status == 201){
-          console.log('Dragon created');
+        if(response.status == 201 || response.status == 200){
+            toast.success('Dragão editado com sucesso');	
+            return;
         }
+        toast.error('Erro ao editar dragão');
         
     };
 

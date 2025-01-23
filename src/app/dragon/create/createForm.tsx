@@ -4,6 +4,7 @@ import React from 'react'
 import api from "@/utils/axios";
 import { Dragon } from "@/utils/types/dragon";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 type FormData = Dragon;
 
@@ -22,10 +23,15 @@ const CreateForm = () => {
         data.histories = historiesArray.filter((history): history is string => history !== undefined);
         
         const response = await api.post("/", data);
-        if (response.status == 201) {
-            redirect('/dragon/'+response.data.id);
+       
+        if(response.status == 201 || response.status == 200){
+            toast.success('Dragão criado com sucess\n\nRedirecionando para a página do dragão em alguns segundos...');	
+            setTimeout(() => {
+                redirect('/dragon/'+response.data.id);
+            }, 2000);
         }
 
+        toast.error('Erro ao criar dragão');
     };
 
     return (
