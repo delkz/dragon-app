@@ -1,3 +1,25 @@
+$color-fogo: #b92828;
+$color-agua: #283eb9;
+$color-terra: #b96228;
+$color-ar: #28b97c;
+$color-escuridao: #7328b9;
+
+:root {
+  --color-fogo: #{$color-fogo};
+  --color-agua: #{$color-agua};
+  --color-terra: #{$color-terra};
+  --color-ar: #{$color-ar};
+  --color-escuridao: #{$color-escuridao};
+}
+
+
+@function text-clr($color) {
+  @if (lightness($color) > 50) {
+    @return #2e1c1c;
+  } @else {
+    @return #fff;
+  }
+}
 html,
 body {
   max-width: 100vw;
@@ -8,7 +30,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Inter Fallback";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,3 +53,16 @@ a {
   padding: 11px;
 }
 
+.size-6{
+  // Para os svg do heroicons
+  font-size: 1rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+@each $type, $color in (fogo: $color-fogo, agua: $color-agua, terra: $color-terra, ar: $color-ar, escuridao: $color-escuridao) {
+  .type-#{$type} {
+    background-color: var(--color-#{$type}) !important;
+    color: text-clr($color);
+  }
+}
