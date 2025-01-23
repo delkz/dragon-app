@@ -1,7 +1,7 @@
 export type Dragon = {
-    id: string,
+    id?: string,
     name: string,
     type: string,
-    histories: string[],
+    histories?: string[],
     createdAt?: string
 }

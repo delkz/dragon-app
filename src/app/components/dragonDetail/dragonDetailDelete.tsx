@@ -1,12 +1,27 @@
+import api from '@/utils/axios'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 interface DragonDetailDeleteProps {
-  deleteDragon: (id: string) => void
+  dragonId: string
 }
 
-const DragonDetailDelete = ({deleteDragon}:DragonDetailDeleteProps) => {
+const DragonDetailDelete = ({dragonId}:DragonDetailDeleteProps) => {
+  const deleteDragon = async (dragonId: string) => {
+    const response = await api.delete(`/${dragonId}`);
+
+    if(response.status == 200){
+      console.log(response);
+      console.log('Dragon deleted');
+      redirect('/');
+    }
+    
+    
+    
+  }
+
   return (
-    <button onClick={() => deleteDragon('dragonId')}>delete</button>
+    <button onClick={() => deleteDragon(dragonId)}>delete</button>
   )
 }
 

@@ -1,0 +1,31 @@
+.dragonCard{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 1.6rem;
+    border-radius: 1rem;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    &Title{
+        font-size: 1.5rem;
+
+    }
+    &Description{
+
+    }
+    &Creation{
+
+    }
+    &Buttons{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    &Type{
+
+    }
+}
