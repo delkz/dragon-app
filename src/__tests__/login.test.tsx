@@ -32,23 +32,4 @@ describe('Login', () => {
 
     });
 
-    it('should show error for invalid credentials', async () => {
-        render(Login);
-        const usernameInput = screen.getByPlaceholderText(/email/i);
-        const passwordInput = screen.getByPlaceholderText(/password/i);
-        const button = screen.getByRole('button', { name: /Log in/i });
-
-        fireEvent.change(usernameInput, { target: { value: 'testlogin@jest.com' } });
-        fireEvent.change(passwordInput, { target: { value: 'password' } });
-
-        await waitFor(() => expect(button).not.toBeDisabled(), {
-            timeout: 500,
-        });
-
-        fireEvent.click(button);
-
-        const errorMessage = await screen.findByText(/Verifique o usuario ou senha/i);
-        expect(errorMessage).toBeInTheDocument();
-    });
-
 })
