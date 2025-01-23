@@ -17,11 +17,11 @@ const DragonDetail = ({ dragon }: DragonDetailProps) => {
     }
 
     return (<div className={`${style.dragonCard}`}>
-        <h2 id="dragonName" className={`${style.dragonCardTitle}`}><Link href={"/dragon/" + dragon.id}>{dragon.name}</Link></h2>
+        <h2 id="dragonName" data-testid="dragonName" className={`${style.dragonCardTitle}`}><Link href={"/dragon/" + dragon.id}>{dragon.name}</Link></h2>
         <p id="dragonType" className={`${style.dragonCardType} type-${dragon.type}`}>Type: {dragon.type}</p>
         <p id="dragonCreationDate" className={`${style.dragonCardCreation}`}>Created At: {dragon.createdAt}</p>
         <div className={`${style.dragonCardButtons}`}>
-            <Link href={"/dragon/edit/" + dragon.id}>Edit</Link>
+            <Link data-testid="dragonEditButton" href={"/dragon/edit/" + dragon.id}>Edit</Link>
             <DragonDetailDelete dragonId={dragon.id} />
         </div>
     </div>)

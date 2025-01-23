@@ -18,7 +18,7 @@ export default async function CreateDragon({
   return (
     <>
       <div className={styles.CreateDragon}>
-        <h1 id="dragonName">{dragonData.name}</h1>
+        <h1 id="dragonName"  data-testid="dragonName">{dragonData.name}</h1>
         <p id="dragonType" >{dragonData.type}</p>
         <p id="dragonCreationDate" >{dragonData.createdAt}</p>
         {
@@ -27,7 +27,7 @@ export default async function CreateDragon({
           ))
         }
 
-        <Link href={"/dragon/edit/" + dragonData.id}>Edit</Link>
+        <Link  data-testid="dragonEditButton" href={"/dragon/edit/" + dragonData.id}>Edit</Link>
       </div>
     </>
   );

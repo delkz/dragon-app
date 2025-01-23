@@ -15,12 +15,10 @@ const DragonDetailDelete = ({dragonId}:DragonDetailDeleteProps) => {
       redirect('/');
     }
     
-    
-    
   }
 
   return (
-    <button onClick={() => deleteDragon(dragonId)}>delete</button>
+    <button data-testid="dragonDeleteButton"  onClick={() => deleteDragon(dragonId)}>delete</button>
   )
 }
 

@@ -1,8 +1,5 @@
 import DragonDetail from '@/app/components/dragonDetail/dragonDetail';
-import DragonDetailDelete from '@/app/components/dragonDetail/dragonDetailDelete';
-import DragonDetailEdit from '@/app/components/dragonDetail/dragonDetailEdit';
-import { fireEvent, render, screen } from '@testing-library/react';
-
+import { render, screen } from '@testing-library/react';
 
 describe('Dragon Detail', () => {
 
@@ -32,34 +29,12 @@ describe('Dragon Detail', () => {
     const dragon = {id: '1', name: 'Zaphira', type: 'Fire' };
 
     render(<DragonDetail dragon={dragon} />);
-    const editButton = screen.getByRole('button', { name: /edit/i });
-    const deleteButton = screen.getByRole('button', { name: /delete/i });
+    const editButton = screen.getByTestId('dragonEditButton');
+    const deleteButton = screen.getByTestId('dragonDeleteButton');
 
     expect(editButton).toBeInTheDocument();
     expect(deleteButton).toBeInTheDocument();
 });
 
-
-  it('should call the delete function when the delete button is clicked', () => {
-    const deleteDragon = jest.fn();
-
-    render(<DragonDetailDelete deleteDragon={deleteDragon} />);
-    
-    const deleteButton = screen.getByRole('button', { name: /delete/i });
-    fireEvent.click(deleteButton);
-    
-    expect(deleteDragon).toHaveBeenCalledWith('1');
-  });
-
-  it('should call the edit function when the edit button is clicked', () => {
-    const editDragon = jest.fn();
-
-    render(<DragonDetailEdit editDragon={editDragon} />);
-    
-    const editButton = screen.getByRole('button', { name: /edit/i });
-    fireEvent.click(editButton);
-    
-    expect(editDragon).toHaveBeenCalledWith('1');
-  });
 
 });

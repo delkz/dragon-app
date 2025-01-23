@@ -11,7 +11,7 @@ describe('Dragon List', () => {
         ];
 
         render(<DragonList dragons={dragons} />);
-        const dragonNames = screen.getAllByTestId('dragon-name');
+        const dragonNames = screen.getAllByTestId('dragonName');
         expect(dragonNames.map((d) => d.textContent)).toEqual(['Alduin', 'Zaphira']);
     });
 
