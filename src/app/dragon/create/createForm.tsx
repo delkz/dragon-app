@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from "react-hook-form"
-import React from 'react'
+import React, { useState } from 'react'
 import api from "@/utils/axios";
 import { Dragon } from "@/utils/types/dragon";
 import { redirect } from "next/navigation";
@@ -11,10 +11,11 @@ type FormData = Dragon;
 
 const CreateForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const [disableButton, setDisableButton] = useState(false);
 
     const onSubmit = async (data: FormData) => {
 
-
+        setDisableButton(true);
         // Essa parte do codigo trata o campo de historias, que pode ser um array ou uma string
         let historiesArray = Array.isArray(data.histories) ? data.histories : [data.histories];
         if(historiesArray.length == 1 && historiesArray[0]){
@@ -30,8 +31,10 @@ const CreateForm = () => {
             setTimeout(() => {
                 redirect('/dragon/'+response.data.id);
             }, 2000);
+            return;
         }else{
             toast.error('Erro ao criar dragão');
+            setDisableButton(false);
         }
 
     };
@@ -57,7 +60,7 @@ const CreateForm = () => {
                 <textarea placeholder="Separe as lendas de avistamento com virgulas" id="histories" {...register("histories", { required: true })} />
                 {errors.histories && <span>This field is required</span>}
             </div>
-            <button type="submit">Criar novo dragão</button>
+            <button type="submit" disabled={disableButton}>Criar novo dragão</button>
         </form>
     )
 }

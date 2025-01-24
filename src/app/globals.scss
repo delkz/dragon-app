@@ -132,6 +132,11 @@ form {
     cursor: pointer;
     transition: background-color 0.3s ease;
     border: 1px solid $color-ar;
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
   }
 
   .btn-secundary{

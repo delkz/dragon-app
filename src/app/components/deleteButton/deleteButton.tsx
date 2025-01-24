@@ -11,11 +11,13 @@ interface DeleteButtonProps {
 const DeleteButton = ({ dragonId,onDelete }: DeleteButtonProps) => {
 
   const defaultExec = async (dragonId: string) => {
-    const response = await api.delete(`/${dragonId}`);
-    if (response.status === 200) {
-      console.log(response);
-      redirect('/');
+    if (window.confirm("Tem certeza que quer deletar o registro? \nEssa ação não pode ser desfeita.")) {
+      const response = await api.delete(`/${dragonId}`);
+      if (response.status === 200) {
+        redirect('/');
+      }
     }
+
   }
 
   const deleteDragon = onDelete || defaultExec;

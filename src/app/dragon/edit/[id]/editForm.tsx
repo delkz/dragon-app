@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from "react-hook-form"
-import React from 'react'
+import React, { useState } from 'react'
 import api from "@/utils/axios";
 import { Dragon } from "@/utils/types/dragon";
 import toast from "react-hot-toast";
@@ -14,9 +14,10 @@ type EditFormProps = {
 
 const EditForm = ({dragon}:EditFormProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const [disableButton, setDisableButton] = useState(false);
 
     const onSubmit = async (data: FormData) => {
-
+        setDisableButton(true);
         // Essa parte do codigo trata o campo de historias, que pode ser um array ou uma string
         let historiesArray = Array.isArray(data.histories) ? data.histories : [data.histories];
         if(historiesArray.length == 1 && historiesArray[0]){
@@ -29,10 +30,11 @@ const EditForm = ({dragon}:EditFormProps) => {
 
         if(response.status == 201 || response.status == 200){
             toast.success('Dragão editado com sucesso');	
+            setDisableButton(false);
             return;
         }
         toast.error('Erro ao editar dragão');
-        
+        setDisableButton(false);
     };
 
     return (
@@ -56,7 +58,7 @@ const EditForm = ({dragon}:EditFormProps) => {
                 <textarea placeholder="Separe as lendas de avistamento com virgulas" defaultValue={dragon.histories} id="description" {...register("histories", { required: true })} />
                 {errors.histories && <span>This field is required</span>}
             </div>
-            <button type="submit">Editar dragão</button>
+            <button type="submit" disabled={disableButton}>Editar dragão</button>
         </form>
     )
 }
