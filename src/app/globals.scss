@@ -5,6 +5,10 @@ $color-agua: #283eb9;
 $color-terra: #b96228;
 $color-ar: #28b97c;
 $color-escuridao: #7328b9;
+$color-eletrico: #b9b928;
+$color-gelo: #28b9b9;
+$color-metal: #b9b9b9;
+$color-veneno: #b928b9;
 
 :root {
   --color-fogo: #{$color-fogo};
@@ -12,6 +16,10 @@ $color-escuridao: #7328b9;
   --color-terra: #{$color-terra};
   --color-ar: #{$color-ar};
   --color-escuridao: #{$color-escuridao};
+  --color-eletrico: #{$color-eletrico};
+  --color-gelo: #{$color-gelo};
+  --color-metal: #{$color-metal};
+  --color-veneno: #{$color-veneno};
   --textColor: #4b4b4b;
 }
 
@@ -64,7 +72,17 @@ a {
   width: 1rem;
 }
 
-@each $type, $color in (fogo: $color-fogo, agua: $color-agua, terra: $color-terra, ar: $color-ar, escuridao: $color-escuridao) {
+@each $type, $color in (
+  fogo: $color-fogo, 
+  agua: $color-agua, 
+  terra: $color-terra, 
+  ar: $color-ar, 
+  escuridao: $color-escuridao, 
+  eletrico: $color-eletrico, 
+  gelo: $color-gelo, 
+  metal: $color-metal, 
+  veneno: $color-veneno
+) {
   .type-#{$type} {
     background-color: var(--color-#{$type}) !important;
     color: text-clr($color);

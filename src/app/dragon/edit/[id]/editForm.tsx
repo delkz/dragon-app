@@ -4,6 +4,7 @@ import React from 'react'
 import api from "@/utils/axios";
 import { Dragon } from "@/utils/types/dragon";
 import toast from "react-hot-toast";
+import { validTypes } from "@/utils/dragonTypes";
 
 type FormData = Dragon;
 type EditFormProps = {
@@ -44,11 +45,9 @@ const EditForm = ({dragon}:EditFormProps) => {
             <div>
                 <label htmlFor="type">Tipo</label>
                 <select defaultValue={dragon.type} id="type" {...register("type", { required: true })}>
-                    <option value="Fogo">Fogo</option>
-                    <option value="Agua">Agua</option>
-                    <option value="Terra">Terra</option>
-                    <option value="Ar">Ar</option>
-                    <option value="Escuridao">Escuridao</option>
+                    { validTypes.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                    )) }
                 </select>
                 {errors.type && <span>This field is required</span>}
             </div>
