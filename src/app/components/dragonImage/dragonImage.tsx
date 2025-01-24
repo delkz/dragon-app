@@ -10,11 +10,25 @@ type DragonImageProps = {
 }
 
 const DragonImage = ({ dragon, className }: DragonImageProps) => {
-    const [imgSrc, setImgSrc] = useState(`/dragonImages/${dragon.id}.png`);
+    const getImageId = (id: string|number|undefined) => {
+        if (!id) {
+            return 1;
+        }
+        return ((Number(id) - 1) % 20) + 1;
+    }
+    
+    const [imgSrc, setImgSrc] = useState(`/dragonImages/${getImageId(dragon.id)}.png`);
+
+    const getFallbackImage = () => {
+        // Essa função garante que a imagem do dragão esteja sempre entre 1 e 20
+        const id = Number(dragon.id);
+        const fallBackId = getImageId(id);
+        setImgSrc(`/dragonImages/${fallBackId}.jpg`);
+    };
 
     return (
         <Image className={className} loading='lazy' alt={dragon.name} width={250} height={250} src={imgSrc} onError={() => {
-            setImgSrc("/dragonImages/0.png");
+            getFallbackImage();
         }}></Image>
 )
 
