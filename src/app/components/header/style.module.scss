@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .header{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     background: white;
@@ -29,6 +31,6 @@
     background-color: $color;
     color: #fff;
     &:hover{
-        background-color: darken( $color, 10%);
+        background-color: color.adjust($color, $lightness: -10%);
     }
 }

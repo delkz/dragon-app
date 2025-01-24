@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $color-fogo: #b92828;
 $color-agua: #283eb9;
 $color-terra: #b96228;
@@ -15,7 +17,7 @@ $color-escuridao: #7328b9;
 
 
 @function text-clr($color) {
-  @if (lightness($color) > 50) {
+  @if (color.channel($color, "lightness", $space: hsl) > 50) {
     @return #2e1c1c;
   } @else {
     @return #fff;
@@ -119,9 +121,9 @@ form {
   }
   
   button:hover {
-    background-color: darken( $color-ar, 10%);
-    color: text-clr( darken( $color-ar, 10%) );
-    border-color: darken( $color-ar, 10%);
+    background-color: color.adjust($color-ar, $lightness: -10%) ;
+    color: text-clr( color.adjust($color-ar, $lightness: -10%) );
+    border-color: color.adjust($color-ar, $lightness: -10%);
   }
 }
 
