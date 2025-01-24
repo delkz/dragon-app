@@ -46,3 +46,12 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 Substitua `your-supabase-url` e `your-supabase-anon-key` pelos valores fornecidos pelo Supabase.
 
 Essas variáveis são utilizadas para configurar a conexão com o Supabase, permitindo a autenticação de usuários e o consumo de dados da API.
+
+## Usuário de Teste
+
+Para facilitar a avaliação do projeto, disponibilizamos um usuário de teste:
+
+- **Email:** usuarioteste@teste.com
+- **Senha:** 123456
+
+Utilize essas credenciais para acessar a aplicação e explorar suas funcionalidades.
