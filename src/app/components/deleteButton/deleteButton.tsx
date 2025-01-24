@@ -4,11 +4,11 @@ import api from '@/utils/axios'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import style from './style.module.scss'
-interface DragonDetailDeleteProps {
+interface DeleteButtonProps {
   dragonId: string
 }
 
-const DragonDetailDelete = ({ dragonId }: DragonDetailDeleteProps) => {
+const DeleteButton = ({ dragonId }: DeleteButtonProps) => {
   const deleteDragon = async (dragonId: string) => {
     const response = await api.delete(`/${dragonId}`);
 
@@ -27,4 +27,4 @@ const DragonDetailDelete = ({ dragonId }: DragonDetailDeleteProps) => {
   )
 }
 
-export default DragonDetailDelete
+export default DeleteButton

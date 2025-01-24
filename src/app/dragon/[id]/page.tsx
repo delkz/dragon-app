@@ -5,7 +5,7 @@ import { protectedRoute } from "@/utils/protectedRoute";
 import Link from "next/link";
 import DragonImage from "@/app/components/dragonImage/dragonImage";
 import getRelativeTime from "@/utils/getRelativeDate";
-import DragonDetailDelete from "@/app/components/dragonDetail/dragonDetailDelete";
+import DragonDetailDelete from "@/app/components/deleteButton/deleteButton";
 
 export default async function CreateDragon({
   params,

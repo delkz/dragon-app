@@ -2,19 +2,19 @@
 
 import { Dragon } from '@/utils/types/dragon'
 import React from 'react'
-import DragonDetailDelete from './dragonDetailDelete'
+import DragonDetailDelete from '../deleteButton/deleteButton'
 import Link from 'next/link'
 import style from './style.module.scss';
 import getRelativeTime from '@/utils/getRelativeDate'
 import DragonImage from '../dragonImage/dragonImage'
 import { motion } from "motion/react"
 
-type DragonDetailProps = {
+type SpotDetailProps = {
     dragon: Dragon | undefined,
 }
 
 
-const DragonDetail = ({ dragon }: DragonDetailProps) => {
+const SpotDetail = ({ dragon }: SpotDetailProps) => {
     if (!dragon || !dragon.id) {
         return (<div>Dragon not found</div>)
     }
@@ -56,4 +56,4 @@ const DragonDetail = ({ dragon }: DragonDetailProps) => {
 
 }
 
-export default DragonDetail
+export default SpotDetail

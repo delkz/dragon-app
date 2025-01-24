@@ -1,15 +1,15 @@
 import React from 'react'
-import DragonDetail from '../dragonDetail/dragonDetail';
+import DragonDetail from '../spotDetail/spotDetail';
 import { Dragon } from '@/utils/types/dragon';
 import style from './style.module.scss';
 
-type DragonListProps = {
+type ItemListProps = {
     dragons: Dragon[],
 }
 
 
 
-const DragonList = ({ dragons }: DragonListProps) => {
+const ItemList = ({ dragons }: ItemListProps) => {
     if (dragons.length === 0) {
         return <div>No dragons available</div>;
     }
@@ -23,4 +23,4 @@ const DragonList = ({ dragons }: DragonListProps) => {
     );
 };
 
-export default DragonList
+export default ItemList

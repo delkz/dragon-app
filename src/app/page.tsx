@@ -1,6 +1,6 @@
 import api from '@/utils/axios'
 import { Dragon } from '@/utils/types/dragon'
-import DragonList from './components/dragonList/dragonList'
+import DragonList from './components/itemList/ItemList'
 import { protectedRoute } from '@/utils/protectedRoute'
 
 
