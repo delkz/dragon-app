@@ -30,9 +30,10 @@ const CreateForm = () => {
             setTimeout(() => {
                 redirect('/dragon/'+response.data.id);
             }, 2000);
+        }else{
+            toast.error('Erro ao criar dragão');
         }
 
-        toast.error('Erro ao criar dragão');
     };
 
     return (
