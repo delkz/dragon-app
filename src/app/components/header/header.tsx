@@ -12,7 +12,11 @@ const Header = async () => {
         <header className={style.header}>
             <div className="container">
                 <div className={style.flex}>
-                    <h1><Link href={"/"}>DragonPedia</Link></h1>
+                 
+                    <Link href={"/"}>
+                        <h1 className={style.title}>Dragon<span>Pedia</span></h1>
+                    </Link>
+                    
                     {data?.user &&  <div className={`${style.buttonList} ${style.flex}`}>
                         <button className={style.button} onClick={logoff}>Sair</button>
                         <Link className={`${style.button } ${style.buttonPrimary}`} href="/dragon/create">Criar novo</Link>
