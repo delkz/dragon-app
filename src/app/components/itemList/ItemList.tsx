@@ -15,7 +15,7 @@ const ItemList = ({ dragons }: ItemListProps) => {
     }
 
     return (
-        <div className={style.dragonList}>
+        <div className={style.list}>
             {dragons.sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
                 <DragonDetail key={item.id} dragon={item} />
             ))}
