@@ -13,7 +13,7 @@ type LoginFormProps = {
   className?: string;
 }
 
-const LoginForm = ({ login, signup, className }: LoginFormProps) => {
+const LoginForm = ({ login, signup }: LoginFormProps) => {
   const {
     register,
     formState: { isDirty, isValid, errors }
