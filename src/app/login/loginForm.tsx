@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import styles from "./style.module.scss";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { AuthError } from "@supabase/supabase-js";
 
 type Inputs = {
   email: string
@@ -11,7 +12,7 @@ type Inputs = {
 
 type LoginFormProps = {
   login: (formData: FormData) => Promise<boolean>;
-  signup: (formData: FormData) => Promise<{ isValid: boolean,message: string, error: [] }>;
+  signup: (formData: FormData) => Promise<{ isValid: boolean,message: string, error: AuthError }>;
   className?: string;
 }
 
