@@ -2,22 +2,23 @@
 
 import api from '@/utils/axios'
 import { redirect } from 'next/navigation'
-import React from 'react'
 import style from './style.module.scss'
 interface DeleteButtonProps {
-  dragonId: string
+  dragonId: string;
+  onDelete?: () => void;
 }
 
-const DeleteButton = ({ dragonId }: DeleteButtonProps) => {
-  const deleteDragon = async (dragonId: string) => {
-    const response = await api.delete(`/${dragonId}`);
+const DeleteButton = ({ dragonId,onDelete }: DeleteButtonProps) => {
 
-    if (response.status == 200) {
+  const defaultExec = async (dragonId: string) => {
+    const response = await api.delete(`/${dragonId}`);
+    if (response.status === 200) {
       console.log(response);
       redirect('/');
     }
-
   }
+
+  const deleteDragon = onDelete || defaultExec;
 
   return (
     <button className={style.button} data-testid="dragonDeleteButton" onClick={() => deleteDragon(dragonId)}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

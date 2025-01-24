@@ -75,6 +75,7 @@ a {
 @each $type, $color in (
   fogo: $color-fogo, 
   agua: $color-agua, 
+  água: $color-agua, 
   terra: $color-terra, 
   ar: $color-ar, 
   escuridao: $color-escuridao, 
@@ -84,7 +85,7 @@ a {
   veneno: $color-veneno
 ) {
   .type-#{$type} {
-    background-color: var(--color-#{$type}) !important;
+    background-color: $color !important;
     color: text-clr($color);
   }
 }

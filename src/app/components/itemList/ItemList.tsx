@@ -7,8 +7,6 @@ type ItemListProps = {
     dragons: Dragon[],
 }
 
-
-
 const ItemList = ({ dragons }: ItemListProps) => {
     if (dragons.length === 0) {
         return <div>No dragons available</div>;
