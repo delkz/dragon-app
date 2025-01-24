@@ -14,13 +14,13 @@ const DragonImage = ({ dragon, className }: DragonImageProps) => {
         if (!id) {
             return 1;
         }
-        return ((Number(id) - 1) % 20) + 1;
+        return ((Number(id) - 1) % 32) + 1;
     }
     
     const [imgSrc, setImgSrc] = useState(`/dragonImages/${getImageId(dragon.id)}.png`);
 
     const getFallbackImage = () => {
-        // Essa função garante que a imagem do dragão esteja sempre entre 1 e 20
+        // Essa função garante que a imagem do dragão esteja sempre entre 1 e 32
         const id = Number(dragon.id);
         const fallBackId = getImageId(id);
         setImgSrc(`/dragonImages/${fallBackId}.jpg`);
