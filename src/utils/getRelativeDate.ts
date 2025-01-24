@@ -1,6 +1,5 @@
-function getRelativeTime(date: string): string {
+function getRelativeTime(date: string, now: Date = new Date()): string {
     // Data atual em UTC
-    const now = new Date();
     const targetDate = new Date(date);
 
     // Calcula a diferença em milissegundos

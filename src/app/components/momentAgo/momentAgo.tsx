@@ -1,3 +1,5 @@
+'use client'
+
 import getRelativeTime from '@/utils/getRelativeDate'
 import { Dragon } from '@/utils/types/dragon'
 import React from 'react'
@@ -9,6 +11,7 @@ interface MomentAgoProps {
 
 const MomentAgo = ({ data }:MomentAgoProps) => {
   const createdAt = data.createdAt;
+  const nowTime = new Date();
 
   if (!createdAt) {
     return null;
@@ -36,7 +39,7 @@ const MomentAgo = ({ data }:MomentAgoProps) => {
           d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
         />
       </svg>
-      {getRelativeTime(createdAt)}
+      {getRelativeTime(createdAt,nowTime)}
     </p>
   );
 }
