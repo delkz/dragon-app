@@ -2,7 +2,7 @@
 
 import getRelativeTime from '@/utils/getRelativeDate'
 import { Dragon } from '@/utils/types/dragon'
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './style.module.scss'
 
 interface MomentAgoProps {
@@ -11,7 +11,11 @@ interface MomentAgoProps {
 
 const MomentAgo = ({ data }:MomentAgoProps) => {
   const createdAt = data.createdAt;
-  const nowTime = new Date();
+  const [nowTime, setNowTime] = React.useState(new Date());
+
+  useEffect(() => {
+    setNowTime(new Date());
+  }, []);
 
   if (!createdAt) {
     return null;
