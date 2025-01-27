@@ -1,7 +1,7 @@
 'use client'
 
 import { Dragon } from '@/utils/types/dragon'
-import React from 'react'
+import React, { memo } from 'react'
 import DragonDetailDelete from '../deleteButton/deleteButton'
 import Link from 'next/link'
 import style from './style.module.scss';
@@ -51,4 +51,4 @@ const SpotDetail = ({ dragon }: SpotDetailProps) => {
 
 }
 
-export default SpotDetail
+export default memo(SpotDetail);

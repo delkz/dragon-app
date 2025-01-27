@@ -4,12 +4,13 @@ import Link from "next/link";
 import DragonImage from "@/app/components/dragonImage/dragonImage";
 import DragonDetailDelete from "@/app/components/deleteButton/deleteButton";
 import MomentAgo from "@/app/components/momentAgo/momentAgo";
+import React, { memo } from 'react';
 
 interface DragonDetailsProps {
     dragonData: Dragon;
 }
 
-const DragonDetails = ({ dragonData }: DragonDetailsProps) => {
+const DragonDetails = memo(function DragonDetails({ dragonData }: DragonDetailsProps) {
     if (!dragonData || !dragonData.id) {
         return (<div data-testid="noDragonFound" >No dragon data available</div>)
     }
@@ -52,6 +53,6 @@ const DragonDetails = ({ dragonData }: DragonDetailsProps) => {
 
         </div>
     )
-}
+});
 
 export default DragonDetails

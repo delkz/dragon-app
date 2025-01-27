@@ -3,6 +3,7 @@ import { Dragon } from "@/utils/types/dragon";
 import { protectedRoute } from "@/utils/protectedRoute";
 import DragonDetails from "./details";
 
+
 export default async function DragonDetailPage({
   params,
 }: {
@@ -22,7 +23,7 @@ export default async function DragonDetailPage({
     return (<div>Dragon not found</div>)
   }
 
-
+   
   return (
     <DragonDetails dragonData={dragonData} />
   );
