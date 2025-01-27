@@ -11,8 +11,8 @@ type Inputs = {
 }
 
 type LoginFormProps = {
-  login: (formData: FormData) => Promise<boolean>;
-  signup: (formData: FormData) => Promise<{ isValid: boolean,message: string, error: AuthError }>;
+  login: (email: string, password: string) => Promise<boolean>;
+  signup: (email: string, password: string) => Promise<{ isValid: boolean,message: string, error: AuthError }>;
   className?: string;
 }
 
@@ -22,26 +22,29 @@ const LoginForm = ({ login, signup }: LoginFormProps) => {
 
   const {
     register,
+    handleSubmit,
     formState: { isDirty, isValid, errors }
   } = useForm<Inputs>({ mode: "onChange" })
   const [wrongPassowrd, setWrongPassword] = useState(false)
 
-  const handleLogin = async (formData: FormData) => {
-
+  const handleLogin = async (data: Inputs) => {
+    toast('Validando Login', {icon:'⌛'});
     setBlockButton(true);
-    const validCredentials = await login(formData);
+
+    const validCredentials = await login(data.email, data.password);
 
     if (!validCredentials) {
       setWrongPassword(true);
+      setBlockButton(false);
+      return;
     }
-
-    setBlockButton(false);
+    
   }
 
-  const handleSignup = async (formData: FormData) => {
-
+  const handleSignup = async (data: Inputs) => {
+    toast('Criando usuario, aguarde', {icon:'⌛'});
     setBlockButton(true);
-    const credentials = await signup(formData);
+    const credentials = await signup(data.email, data.password);
 
     if (!credentials.isValid) {
       toast.error('Algo deu errado ao criar o usuario. Verifique os campos\n' + credentials.message);
@@ -52,7 +55,7 @@ const LoginForm = ({ login, signup }: LoginFormProps) => {
   }
 
 
-  return <form className={styles.formContainer}>
+  return <form className={styles.formContainer} onSubmit={handleSubmit(handleLogin)}>
     <div>
       <label htmlFor="email">Email:</label>
       <input data-testid="email" placeholder="Email" {...register("email", { required: true })} id="email" name="email" type="email" required />
@@ -62,8 +65,8 @@ const LoginForm = ({ login, signup }: LoginFormProps) => {
       <input data-testid="password" placeholder="Senha" {...register("password", { required: true })} id="password" name="password" type="password" required />
     </div>
 
-    <button data-testid="loginButton" className={styles.btnPrimary} disabled={!isDirty || !isValid || blockButton} formAction={handleLogin}>Fazer login</button>
-    <button data-testid="registerButton" className={`${styles.formContainer} btn-secundary`} formAction={handleSignup} disabled={!isDirty || !isValid || blockButton}>Criar novo usuario</button>
+    <button data-testid="loginButton" className={styles.btnPrimary} disabled={!isDirty || !isValid || blockButton} type="submit">Fazer login</button>
+    <button data-testid="registerButton" className={`${styles.formContainer} btn-secundary`} type="button" onClick={handleSubmit(handleSignup)} disabled={!isDirty || !isValid || blockButton}>Criar novo usuario</button>
 
     {(errors.password || errors.email) && <span>Verifique os campos</span>}
     {(wrongPassowrd) && <span>Verifique o usuario ou senha</span>}
